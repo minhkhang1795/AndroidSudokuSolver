@@ -38,7 +38,7 @@ public class SolveActivity extends AppCompatActivity implements EditCellFragment
         int n = 9;
         sudoku = new Sudoku(n);
         initializeGrid(n);
-        initilizeTest3();
+        initilizeTest2();
 
     }
 
@@ -207,7 +207,7 @@ public class SolveActivity extends AppCompatActivity implements EditCellFragment
         setNumberForCell(71, 1, true);
         setNumberForCell(73, 9, true);
         setNumberForCell(76, 7, true);
-        setNumberForCell(79, 6, true);
+//        setNumberForCell(79, 6, true);
 //        setNumberForCell(77, 9, true);
 //        setNumberForCell(78, 2, true);
 
