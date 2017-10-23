@@ -52,8 +52,8 @@ public class SolveActivity extends AppCompatActivity implements EditCellFragment
             Cell cell = cells.get(i);
             setNumberForCell(i, cell.getNumber(), cell.isKnown());
 
-            if (cell.getNumber() == -1)
-                setPotentialForCell(i, cell.getPotentials());
+//            if (cell.getNumber() == -1)
+//                setPotentialForCell(i, cell.getPotentials());
         }
     }
 
@@ -66,8 +66,7 @@ public class SolveActivity extends AppCompatActivity implements EditCellFragment
                     continue;
 
                 int number = Integer.parseInt(cellViews.get(i).getText().toString());
-                boolean isCellKnown = true;
-                sudoku.setCell(i, number, isCellKnown, isFirstSetup);
+                sudoku.setCell(i, number, true, true);
             }
         } else {
             for (int i = 0; i < cellViews.size(); i++) {
@@ -77,7 +76,7 @@ public class SolveActivity extends AppCompatActivity implements EditCellFragment
 
                 int number = Integer.parseInt(cellViews.get(i).getText().toString());
                 boolean isCellKnown = sudoku.allCells.get(i).isKnown();
-                sudoku.setCell(i, number, isCellKnown, isFirstSetup);
+                sudoku.setCell(i, number, isCellKnown, false);
             }
         }
     }
@@ -207,12 +206,7 @@ public class SolveActivity extends AppCompatActivity implements EditCellFragment
         setNumberForCell(71, 1, true);
         setNumberForCell(73, 9, true);
         setNumberForCell(76, 7, true);
-//        setNumberForCell(79, 6, true);
-//        setNumberForCell(77, 9, true);
-//        setNumberForCell(78, 2, true);
-
-//        setNumberForCell(4, 3, true);
-//        setNumberForCell(4, 2, true);
+        setupSudokuFromGrid();
     }
 
 //    private void initilizeTest() {

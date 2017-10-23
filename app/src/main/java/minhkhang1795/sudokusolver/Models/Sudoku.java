@@ -12,16 +12,14 @@ import java.util.Comparator;
 
 public class Sudoku {
 
-    private int n = 4;
-
     public ArrayList<Cell> allCells = new ArrayList<>();
+    public ArrayList<Solution> solutions = new ArrayList<>();
+    public ArrayList<Cell> problemSet = new ArrayList<>();
+    private int n = 4;
     private ArrayList<Cell> uncompleted = new ArrayList<>();
     private ArrayList<ArrayList<Cell>> rows = new ArrayList<>();
     private ArrayList<ArrayList<Cell>> columns = new ArrayList<>();
     private ArrayList<ArrayList<Cell>> boxes = new ArrayList<>();
-
-    public ArrayList<Solution> solutions = new ArrayList<>();
-    public ArrayList<Cell> problemSet = new ArrayList<>();
 
     public Sudoku(int n) {
         createNew(n);
@@ -36,6 +34,24 @@ public class Sudoku {
         for (Cell cell : sudoku.allCells)
             if (cell.isKnown())
                 problemSet.add(cell);
+    }
+
+    private static ArrayList<Cell> copyArray(ArrayList<Cell> cells) {
+        ArrayList<Cell> result = new ArrayList<>();
+        for (Cell cell : cells) {
+            Cell temp = new Cell(cell.getSize(), cell.getRow(), cell.getColumn(), cell.getPotentials(), cell.isKnown());
+            result.add(temp);
+        }
+        return result;
+    }
+
+    private static ArrayList<ArrayList<Cell>> copy2DArray(ArrayList<ArrayList<Cell>> array) {
+        ArrayList<ArrayList<Cell>> result = new ArrayList<>();
+        for (ArrayList<Cell> cells : array) {
+            ArrayList<Cell> temp = Sudoku.copyArray(cells);
+            result.add(temp);
+        }
+        return result;
     }
 
     public void createNew(int n) {
@@ -110,7 +126,6 @@ public class Sudoku {
             problemSet.add(allCells.get(cellBox));
     }
 
-
     public int getSize() {
         return n;
     }
@@ -134,12 +149,13 @@ public class Sudoku {
             // Each solution has a number taken randomly from a cell with a least number of potentials
             Cell cell = uncompleted.get(0);
             for (int i : cell.getPotentials()) {
-                Sudoku childSudoku= new Sudoku(this);
+                Sudoku childSudoku = new Sudoku(this);
                 childSudoku.allCells.get(cell.getPositionInSudokuGrid()).setNumber(i);
                 childSudoku.solve();
                 for (Solution solution : childSudoku.solutions) {
                     Solution temp = new Solution(solution);
                     solutions.add(temp);
+                    break;
                 }
             }
 
@@ -313,24 +329,6 @@ public class Sudoku {
         public Solution(Solution solution) {
             this.allCells = Sudoku.copyArray(solution.allCells);
         }
-    }
-
-    private static ArrayList<Cell> copyArray(ArrayList<Cell> cells) {
-        ArrayList<Cell> result = new ArrayList<>();
-        for (Cell cell: cells) {
-            Cell temp = new Cell(cell.getSize(), cell.getRow(), cell.getColumn(), cell.getPotentials(), cell.isKnown());
-            result.add(temp);
-        }
-        return result;
-    }
-
-    private static ArrayList<ArrayList<Cell>> copy2DArray(ArrayList<ArrayList<Cell>> array) {
-        ArrayList<ArrayList<Cell>> result = new ArrayList<>();
-        for (ArrayList<Cell> cells: array) {
-            ArrayList<Cell> temp = Sudoku.copyArray(cells);
-            result.add(temp);
-        }
-        return result;
     }
 
 
