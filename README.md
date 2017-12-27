@@ -4,7 +4,7 @@
 
 One of my friends at [Olin](http://www.olin.edu) occasionally posted a Sudoku puzzle on his dorm room whiteboard, attracting and challenging people walking by. One day, I and two other friends tried to solve one of his puzzles. Three of us eventually spent nearly an hour solving the problem!
 
-I then asked myself if I knew the methods to solve a Sudoku puzzle, could I create a program that helps solve the puzzle for me? I mentioned the Sudoku solver program to my professors in the WeCreate co-curricular and they shared with us the [A Pencil-and-Paper Algorithm for Solving Sudoku Puzzles](http://www.ams.org/notices/200904/tx090400460p.pdf).
+I then asked myself if I knew the methods to solve a Sudoku puzzle, could I create a program that helps solve the puzzle for me? I mentioned the Sudoku solver program to my professors in the **WeCreate co-curricular** and they shared with us the [A Pencil-and-Paper Algorithm for Solving Sudoku Puzzles](http://www.ams.org/notices/200904/tx090400460p.pdf).
 
 After a couple of weeks, I finally developed an Android application below. It's still not perfect and the algorithm isn't the most efficient one. But at least, I now have an app that helps me solve my friend’s Sudoku puzzles! 
 
